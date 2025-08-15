@@ -1,0 +1,96 @@
+html
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>USIU-A Event Booking Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img src="assets/usiu-logo.png" alt="USIU-A Logo placeholder" class="logo" />
+
+      <div class="titles">
+        <h1>Event Booking Dashboard</h1>
+        <p class="subtitle">Discover. Join. Engage.</p>
+      </div>
+    </div>
+    <div class="header-actions" aria-live="polite" id="headerMessage"></div>
+  </header>
+
+  <main class="container">
+    <section class="events">
+      <div class="section-head">
+        <h2>Upcoming Events</h2>
+        <div class="legend">
+          <span class="pill available" title="Slots &gt; 0">Open</span>
+          <span class="pill full" title="Slots = 0">Fully Booked</span>
+        </div>
+      </div>
+
+      <!-- Events Table (switches to cards on small screens) -->
+      <div class="table-wrap" role="region" aria-labelledby="eventsHeading">
+        <table id="eventsTable" class="events-table">
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Venue</th>
+              <th>Slots Available</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="eventsBody">
+            <!-- dynamically populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="register">
+      <h2>Register via Form</h2>
+      <p class="help">Prefer typing your details? Use the form below.</p>
+      <form id="registerForm" novalidate>
+        <div class="grid-2">
+          <label>
+            <span>Name</span>
+            <input type="text" id="name" placeholder="e.g., Jane Doe" required>
+            <small class="error" id="nameErr"></small>
+          </label>
+          <label>
+            <span>Student ID</span>
+            <input type="text" id="studentId" placeholder="e.g., USIU123456" required>
+            <small class="error" id="idErr"></small>
+          </label>
+        </div>
+        <label>
+          <span>Event</span>
+          <select id="eventSelect" required></select>
+          <small class="error" id="eventErr"></small>
+        </label>
+        <button type="submit" class="btn-primary">Submit Registration</button>
+      </form>
+
+      <div id="formMessage" class="message" aria-live="polite"></div>
+      <details class="bookings" id="bookingsPanel">
+        <summary>Your Bookings</summary>
+        <ul id="bookingsList"></ul>
+      </details>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; <span id="year"></span> USIU-A (Student Project). All rights reserved.</p>
+    <nav aria-label="Social media">
+      <a href="#" aria-label="Twitter">Twitter</a>
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="#" aria-label="LinkedIn">LinkedIn</a>
+    </nav>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
